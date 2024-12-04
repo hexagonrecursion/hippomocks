@@ -1,3 +1,5 @@
+#include <hippomocks.h>
+
 class IBar {
 public:
     virtual ~IBar() {}
