@@ -8,7 +8,7 @@ public:
 
 int main() {
     MockRepository mocks;
-    IBar *barMock = mocks.InterfaceMock<IBar>();
+    IBar *barMock = mocks.Mock<IBar>();
 
     mocks.OnCall(barMock, IBar::b);
 }
