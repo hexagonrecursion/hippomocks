@@ -5,19 +5,10 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        # os: [ ubuntu-latest, ubuntu-24.04, ubuntu-22.04, ubuntu-20.04, windows-latest, windows-2022, windows-2019, macos-latest, macos-15, macos-14, macos-13 ]
         os: [ macos-latest, macos-15, macos-14, macos-13 ]
-        hippomocks: [ hippomocks-from-colobot, HippoMocks ]
+        hippomocks: [ build/hippomocks-master, build/hippomocks-colobot ]
     steps:
     - uses: actions/checkout@v4
     - run: cmake -S . -B build
     - run: make -C build
-
-
-
-    
-    - run: g++ -I ${{ matrix.hippomocks }} example.cpp
-    - run: ./a.out
-      if: runner.os != 'Windows'
-    - run: .\a.exe
-      if: runner.os == 'Windows'
+    - run: ${{ matrix.hippomocks }}
