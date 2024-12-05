@@ -1208,14 +1208,19 @@ std::pair<int, int> virtual_index(T t)
 	} conv;
 	conv.t = t;
 #if defined(SOME_ARM)
+	std::cerr << "ARM" << std::endl;
 	// ARM ABI says the bit is in bsaeoffs instead, and that the value is shiffted left 1.
 	// This because valid ARM pointers may have the LSB set, so the "is virtual" bit had to be moved.
-	if (conv.u.baseoffs & 1)
+	if (conv.u.baseoffs & 1) {
+		std::cerr << "return A" << std::endl;
 		return std::pair<int, int>(conv.u.baseoffs / (sizeof(void*) * 2), conv.u.value / sizeof(void *));
+	}
 #else
 	// simple Itanium ABI implementation, used by everything but Microsoft and embedded EDG-based compilers
-	if (conv.u.value & 1)
+	if (conv.u.value & 1) {
+		std::cerr << "return B" << std::endl;
 		return std::pair<int, int>(conv.u.baseoffs / sizeof(void*), conv.u.value / sizeof(void *));
+	}
 #endif
 
 #elif defined(_MSC_VER)
@@ -1248,7 +1253,8 @@ std::pair<int, int> virtual_index(T t)
 #else
 #error No virtual indexing found for this compiler! Please contact the maintainers of HippoMocks
 #endif
-
+	
+	std::cerr << "return C" << std::endl;
 	return std::pair<int, int>(-1, 0);
 }
 
