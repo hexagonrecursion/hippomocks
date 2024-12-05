@@ -130,6 +130,7 @@ class X{};
 #include <cstring>
 #include <algorithm>
 #include <limits>
+#include <cpptrace/cpptrace.hpp>
 
 #ifdef _MSC_VER
 // these warnings are pointless and huge, and will confuse new users.
@@ -5180,6 +5181,7 @@ template <typename Z>
 void MockRepository::BasicRegisterExpect(mock<Z> *zMock, int baseOffset, int funcIndex, void (base_mock::*func)(), int X)
 {
 	if (funcIndex > VIRT_FUNC_LIMIT) RAISEEXCEPTION(NotImplementedException(this));
+	cpptrace::generate_trace().print();
 	std::cerr << "(unsigned int)baseOffset * sizeof(void*) + sizeof(void*)-1 > sizeof(Z) === " << ( (unsigned int)baseOffset * sizeof(void*) + sizeof(void*)-1 > sizeof(Z) ) << std::endl;
 	std::cerr << "(unsigned int)baseOffset * sizeof(void*) + sizeof(void*)-1 === " << ( (unsigned int)baseOffset * sizeof(void*) + sizeof(void*)-1 ) << std::endl;
 	std::cerr << "baseOffset === " << baseOffset << std::endl;
