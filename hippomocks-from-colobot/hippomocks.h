@@ -87,7 +87,7 @@ extern "C" __declspec(dllimport) void WINCALL DebugBreak();
 
 #if defined(_M_IX86) || defined(__i386__) || defined(i386) || defined(_X86_) || defined(__THW_INTEL) ||  defined(__x86_64__) || defined(_M_X64)
 #define SOME_X86
-#elif defined(arm) || defined(__arm__) || defined(ARM) || defined(_ARM_)
+#elif defined(arm) || defined(__arm__) || defined(ARM) || defined(_ARM_) || defined(__aarch64__)
 #define SOME_ARM
 #endif
 
@@ -103,7 +103,7 @@ extern "C" __declspec(dllimport) void WINCALL DebugBreak();
 #elif defined(__APPLE__)
 #define _HIPPOMOCKS__ENABLE_CFUNC_MOCKING_SUPPORT
 #endif
-#elif defined(SOME_ARM) && defined(__GNUC__)
+#elif defined() && defined(__GNUC__)
 #define _HIPPOMOCKS__ENABLE_CFUNC_MOCKING_SUPPORT
 
 // This clear-cache is *required*. The tests will fail if you remove it.
