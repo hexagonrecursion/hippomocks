@@ -6035,6 +6035,7 @@ template <int X, typename Z2, typename Y, typename Z>
 TCall<Y> &MockRepository::RegisterExpect_(Z2 *mck, Y (Z::*func)(), RegistrationType expect, const char *functionName, const char *fileName, unsigned long lineNo)
 {
 	std::pair<int, int> funcIndex = virtual_index((Y (Z2::*)())func);
+std::cerr << "funcIndex === " << funcIndex.first << ", " <<  funcIndex.second << std::endl;
 	Y (mockFuncs<Z2, Y>::*mfp)();
 	mfp = &mockFuncs<Z2, Y>::template expectation0<X>;
 	BasicRegisterExpect(reinterpret_cast<mock<Z2> *>(mck),
