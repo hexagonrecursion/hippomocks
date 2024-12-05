@@ -103,7 +103,7 @@ extern "C" __declspec(dllimport) void WINCALL DebugBreak();
 #elif defined(__APPLE__)
 #define _HIPPOMOCKS__ENABLE_CFUNC_MOCKING_SUPPORT
 #endif
-#elif defined() && defined(__GNUC__)
+#elif defined(SOME_ARM) && defined(__GNUC__)
 #define _HIPPOMOCKS__ENABLE_CFUNC_MOCKING_SUPPORT
 
 // This clear-cache is *required*. The tests will fail if you remove it.
