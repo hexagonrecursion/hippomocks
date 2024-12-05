@@ -9,6 +9,6 @@ jobs:
         hippomocks: [ build/hippomocks-master, build/hippomocks-colobot ]
     steps:
     - uses: actions/checkout@v4
-    - run: cmake -S . -B build -D CMAKE_BUILD_TYPE Debug
+    - run: cmake -S . -B build -D CMAKE_BUILD_TYPE=Debug
     - run: make -C build
     - run: ${{ matrix.hippomocks }}
