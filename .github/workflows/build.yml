@@ -10,6 +10,12 @@ jobs:
         hippomocks: [ hippomocks-from-colobot, HippoMocks ]
     steps:
     - uses: actions/checkout@v4
+    - run: cmake
+    - run: make
+
+
+
+    
     - run: g++ -I ${{ matrix.hippomocks }} example.cpp
     - run: ./a.out
       if: runner.os != 'Windows'
