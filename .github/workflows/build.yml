@@ -10,8 +10,8 @@ jobs:
         hippomocks: [ hippomocks-from-colobot, HippoMocks ]
     steps:
     - uses: actions/checkout@v4
-    - run: cmake
-    - run: make
+    - run: cmake -S . -B build
+    - run: make -C build
 
 
 
