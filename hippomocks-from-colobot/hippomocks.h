@@ -1197,6 +1197,7 @@ template <typename T>
 std::pair<int, int> virtual_index(T t)
 {
 #if defined(__GNUG__)
+	std::cerr << "GNUG" << std::endl;
 	union {
 		T t;
 		struct
